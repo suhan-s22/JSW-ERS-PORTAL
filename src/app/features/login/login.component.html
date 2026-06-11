@@ -1,0 +1,114 @@
+<div class="login-page">
+  <section class="hero-panel" aria-hidden="true">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-line">Making</p>
+      <p class="hero-line">India</p>
+      <p class="hero-line">Better</p>
+      <p class="hero-line">Everyday</p>
+    </div>
+  </section>
+
+  <section class="form-panel">
+    <div class="login-card">
+      <h1 class="card-title">Electrical License Tracking</h1>
+
+      <form [formGroup]="form" (ngSubmit)="onLogin()" novalidate>
+        <div class="field-group">
+          <label for="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            formControlName="username"
+            placeholder="Enter username"
+            autocomplete="username"
+            [class.invalid]="isInvalid('username')"
+          />
+          @if (isInvalid('username')) {
+            <span class="error-msg">Username is required.</span>
+          }
+        </div>
+
+        <div class="field-group">
+          <label for="password">Password</label>
+          <div class="password-wrapper">
+            <input
+              id="password"
+              [type]="showPassword() ? 'text' : 'password'"
+              formControlName="password"
+              placeholder="Enter password"
+              autocomplete="current-password"
+              [class.invalid]="isInvalid('password')"
+            />
+            <button
+              type="button"
+              class="toggle-password"
+              (click)="togglePassword()"
+              [attr.aria-label]="showPassword() ? 'Hide password' : 'Show password'"
+            >
+              @if (showPassword()) {
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                  <line x1="1" y1="1" x2="23" y2="23"/>
+                </svg>
+              } @else {
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              }
+            </button>
+          </div>
+          @if (isInvalid('password')) {
+            <span class="error-msg">Password is required.</span>
+          }
+        </div>
+
+        <div class="field-group">
+          <label>Captcha Display</label>
+          <div class="captcha-row">
+            <div class="captcha-display">{{ captchaCode() }}</div>
+            <button type="button" class="captcha-refresh" (click)="refreshCaptcha()" aria-label="Refresh captcha">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 4 23 10 17 10"/>
+                <polyline points="1 20 1 14 7 14"/>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="captchaInput">Captcha Input</label>
+          <input
+            id="captchaInput"
+            type="text"
+            formControlName="captchaInput"
+            placeholder="Enter captcha"
+            autocomplete="off"
+            [class.invalid]="isInvalid('captchaInput')"
+          />
+          @if (isInvalid('captchaInput')) {
+            <span class="error-msg">{{ getCaptchaError() }}</span>
+          }
+        </div>
+
+        <div class="checkbox-group" [class.invalid]="isInvalid('rememberMe')">
+          <mat-checkbox formControlName="rememberMe" color="primary">Remember Me</mat-checkbox>
+          @if (isInvalid('rememberMe')) {
+            <span class="error-msg">Remember Me is required.</span>
+          }
+        </div>
+
+        <div class="checkbox-group" [class.invalid]="isInvalid('agreeContinue')">
+          <mat-checkbox formControlName="agreeContinue" color="primary">Agree &amp; Continue</mat-checkbox>
+          @if (isInvalid('agreeContinue')) {
+            <span class="error-msg">You must agree to continue.</span>
+          }
+        </div>
+
+        <button type="submit" class="login-btn" mat-flat-button color="primary">Login</button>
+      </form>
+    </div>
+  </section>
+</div>

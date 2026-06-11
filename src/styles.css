@@ -1,1 +1,64 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/azure-blue.css';
+
+:root {
+  --primary: #1a3a8f;
+  --secondary: #2a52be;
+  --bg: #f0f2f5;
+  --error: #dc3545;
+  --success: #28a745;
+  --white: #ffffff;
+
+  --mat-sys-primary: #1a3a8f;
+  --mat-sys-on-primary: #ffffff;
+  --mat-sys-primary-container: #dce1f5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg);
+  color: #333;
+  line-height: 1.5;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(26, 58, 143, 0.15);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
