@@ -4,6 +4,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { LoginComponent } from './features/login/login.component';
 import { FormComponent } from './pages/form.component';
 import { RepairComponent } from './pages/repair.component';
+import { ViewComponent } from './pages/view/view.component';
 
 import {
   AllotmentComponent,
@@ -14,7 +15,6 @@ import {
   NotificationsComponent,
   ObservationsComponent,
   ProfileComponent,
-  ViewComponent,
 } from './pages/pages.component';
 
 export const routes: Routes = [

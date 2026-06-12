@@ -1,0 +1,96 @@
+<div class="view-container">
+
+  <div class="page-header">
+
+    <h2>Equipment Details</h2>
+
+    <div class="header-actions">
+
+      <button
+        class="export-btn"
+        (click)="exportCsv()">
+        Export
+      </button>
+
+      <button
+        class="settings-btn"
+        (click)="openSettings()">
+        ⚙
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="table-wrapper">
+
+    <table>
+
+      <thead>
+
+        <tr>
+          <th>Refurbishment ID</th>
+          <th>Allotment</th>
+          <th>Main Equipment Name</th>
+          <th>Serial No</th>
+          <th>Mfg Year</th>
+          <th>Make</th>
+          <th>Model</th>
+          <th>KW</th>
+          <th>Frame</th>
+          <th>RPM</th>
+        </tr>
+
+        <tr class="filter-row">
+          <th><input type="text"></th>
+          <th><input type="text"></th>
+          <th><input type="text"></th>
+          <th><input type="text"></th>
+          <th><input type="text"></th>
+          <th><input type="text"></th>
+          <th><input type="text"></th>
+          <th><input type="text"></th>
+          <th><input type="text"></th>
+          <th><input type="text"></th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        @for (row of rows; track row.refurbishmentId) {
+
+          <tr>
+
+            <td>{{ row.refurbishmentId }}</td>
+
+            <td>
+
+              <button
+                class="eye-btn"
+                (click)="viewAllotment(row.refurbishmentId)">
+                👁
+              </button>
+
+            </td>
+
+            <td>{{ row.equipmentName }}</td>
+            <td>{{ row.serialNo }}</td>
+            <td>{{ row.mfgYear }}</td>
+            <td>{{ row.make }}</td>
+            <td>{{ row.model }}</td>
+            <td>{{ row.kw }}</td>
+            <td>{{ row.frame }}</td>
+            <td>{{ row.rpm }}</td>
+
+          </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

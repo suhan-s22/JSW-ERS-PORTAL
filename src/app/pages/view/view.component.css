@@ -1,0 +1,80 @@
+.view-container {
+  padding: 20px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.page-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.export-btn {
+  background: #0d6efd;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.settings-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 18px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #ddd;
+}
+
+table {
+  width: 100%;
+  min-width: 1200px;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+thead {
+  background: #f4f6f9;
+}
+
+th,
+td {
+  border: 1px solid #d9d9d9;
+  padding: 8px;
+  text-align: left;
+}
+
+.filter-row input {
+  width: 100%;
+  padding: 4px;
+  font-size: 11px;
+  box-sizing: border-box;
+}
+
+tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.eye-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
