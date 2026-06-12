@@ -1,172 +1,180 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-FormBuilder,
-FormGroup,
-ReactiveFormsModule,
-Validators
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { DataService } from '../services/data.service';
 
 @Component({
-selector: 'app-form',
-standalone: true,
-imports: [
-CommonModule,
-ReactiveFormsModule
-],
-templateUrl: './form.component.html',
-styleUrls: ['./form.component.css']
+  selector: 'app-form',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.css'],
 })
 export class FormComponent {
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
+  private dataService = inject(DataService);
 
-private fb = inject(FormBuilder);
-private router = inject(Router);
-private dataService = inject(DataService);
+  form: FormGroup = this.fb.group({
+    mainEquipmentName: ['', Validators.required],
+    make: ['', Validators.required],
 
-form: FormGroup = this.fb.group({
+    equipmentSerialNo: ['', Validators.required],
+    model: [''],
 
-```
-mainEquipmentName: ['', Validators.required],
-make: ['', Validators.required],
+    motorManufacturingYear: ['', Validators.required],
+    kw: [''],
 
-equipmentSerialNo: ['', Validators.required],
-model: [''],
+    applicationUse: ['', Validators.required],
+    frame: ['', Validators.required],
 
-motorManufacturingYear: ['', Validators.required],
-kw: [''],
+    installedLocation: [''],
+    size: [''],
 
-applicationUse: ['', Validators.required],
-frame: ['', Validators.required],
+    installedQty: ['', Validators.required],
+    rpm: [''],
 
-installedLocation: [''],
-size: [''],
+    equipmentType: ['', Validators.required],
+    serviceType: ['', Validators.required],
 
-installedQty: ['', Validators.required],
-rpm: [''],
+    receivedDate: ['', Validators.required],
+    warrantyStatus: ['', Validators.required],
 
-equipmentType: ['', Validators.required],
-serviceType: ['', Validators.required],
+    bearingType: ['', Validators.required],
 
-receivedDate: ['', Validators.required],
-warrantyStatus: ['', Validators.required],
+    kva: [''],
+    voltage: [''],
+    dutyCycle: [''],
+    current: [''],
 
-bearingType: ['', Validators.required],
+    receivedTime: ['', Validators.required],
+    previousRefurbishmentNo: [''],
+    sparesDetails: [''],
 
-kva: [''],
-voltage: [''],
-dutyCycle: [''],
-current: [''],
+    department: [''],
+    location: [''],
 
-receivedTime: ['', Validators.required],
-previousRefurbishmentNo: [''],
-sparesDetails: [''],
+    spocName: ['', Validators.required],
+    spocEmail: ['', [Validators.required, Validators.email]],
+    spocContact: ['', Validators.required],
 
-department: [''],
-location: [''],
+    electricalHeadName: ['', Validators.required],
+    electricalHeadEmail: ['', [Validators.required, Validators.email]],
 
-spocName: ['', Validators.required],
-spocEmail: ['', [Validators.required, Validators.email]],
-spocContact: ['', Validators.required],
+    hodName: ['', Validators.required],
+    hodEmail: ['', [Validators.required, Validators.email]],
 
-electricalHeadName: ['', Validators.required],
-electricalHeadEmail: ['', [Validators.required, Validators.email]],
+    defectsObserved: ['', Validators.required],
+    repairsRequired: ['', Validators.required],
+    reasonOfFailure: ['', Validators.required],
 
-hodName: ['', Validators.required],
-hodEmail: ['', [Validators.required, Validators.email]],
+    sapMaterialCode: ['', Validators.required],
+    sapEquipmentNo: ['', Validators.required],
+    sapRefurbishmentOrderNo: ['', Validators.required],
+    sapFundCenter: ['', Validators.required],
+  });
 
-defectsObserved: ['', Validators.required],
-repairsRequired: ['', Validators.required],
-reasonOfFailure: ['', Validators.required],
+  equipmentTypes = [
+    'SQ. CAGE MOTORS CLASS -F',
+    'SLIP RING MOTORS CLASS -F',
+    'DOUBLE SPEED MOTORS CLASS-F',
+    'CONTROL TRANSFORMER',
+    'SUBMERSIBLE / MONOBLOCK PUMP MOTORS',
+    '1-PHASE CAGE MOTORS',
+    'BRAKE COILS',
+    'WELDING COIL PRICE',
+    'Overhauling of HT Motors',
+    'Others',
+  ];
 
-sapMaterialCode: ['', Validators.required],
-sapEquipmentNo: ['', Validators.required],
-sapRefurbishmentOrderNo: ['', Validators.required],
-sapFundCenter: ['', Validators.required]
-```
+  warrantyStatuses = ['Under Warranty', 'Out Of Warranty'];
 
-});
+  bearingTypes = [
+    'Deep Groove Ball Bearing',
+    'Angular Contact Ball Bearing',
+    'Self Aligning Ball Bearing',
+    'Cylindrical Roller Bearing',
+    'Spherical Roller Bearing',
+    'Tapered Roller Bearing',
+    'O-Ring',
+  ];
 
-equipmentTypes = [
-'SQ. CAGE MOTORS CLASS -F',
-'SLIP RING MOTORS CLASS -F',
-'DOUBLE SPEED MOTORS CLASS-F',
-'CONTROL TRANSFORMER',
-'SUBMERSIBLE / MONOBLOCK PUMP MOTORS',
-'1-PHASE CAGE MOTORS',
-'BRAKE COILS',
-'WELDING COIL PRICE',
-'Overhauling of HT Motors',
-'Others'
-];
+  failureReasons = [
+    'Flash Over',
+    'Contamination',
+    'Inter Turn Short',
+    'Bearings Failure',
+    'Lead Change',
+    'Overload',
+    'Overheating',
+    'Winding Damage',
+    'Insulation Failure',
+    'Voltage Fluctuation',
+    'Single Phasing',
+    'Short Circuit',
+    'Loose Connections',
+    'Cooling Failure',
+    'Mechanical Jam',
+    'Others',
+  ];
 
-warrantyStatuses = [
-'Under Warranty',
-'Out Of Warranty'
-];
+  isInvalid(field: string): boolean {
+  const control = this.form.get(field);
 
-bearingTypes = [
-'Deep Groove Ball Bearing',
-'Angular Contact Ball Bearing',
-'Self Aligning Ball Bearing',
-'Cylindrical Roller Bearing',
-'Spherical Roller Bearing',
-'Tapered Roller Bearing',
-'O-Ring'
-];
-
-failureReasons = [
-'Flash Over',
-'Contamination',
-'Inter Turn Short',
-'Bearings Failure',
-'Lead Change',
-'Overload',
-'Overheating',
-'Winding Damage',
-'Insulation Failure',
-'Voltage Fluctuation',
-'Single Phasing',
-'Short Circuit',
-'Loose Connections',
-'Cooling Failure',
-'Mechanical Jam',
-'Others'
-];
-
-onSubmit(): void {
-
-```
-if (this.form.invalid) {
-
-  this.form.markAllAsTouched();
-
-  alert(
-    'Please complete all mandatory fields correctly.'
+  return !!(
+    control &&
+    control.invalid &&
+    control.touched
   );
-
-  return;
 }
 
-const requisitionId =
-  'REQ-' + Math.floor(10000 + Math.random() * 90000);
+getErrorMessage(field: string): string {
+  const control = this.form.get(field);
 
-this.dataService.addForm({
-  id: requisitionId,
-  ...this.form.value
-});
+  if (!control || !control.errors) {
+    return '';
+  }
 
-alert(
-  `Requisition Created Successfully.\nID : ${requisitionId}`
-);
+  if (control.errors['required']) {
+    return 'This field is required';
+  }
 
-this.router.navigate([
-  '/repair',
-  requisitionId
-]);
-```
+  if (control.errors['email']) {
+    return 'Please enter a valid email address';
+  }
 
+  return 'Invalid value';
 }
+
+  onSubmit(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+
+      alert('Please complete all mandatory fields correctly.');
+
+      return;
+    }
+
+    const requisitionId =
+      'REQ-' + Math.floor(10000 + Math.random() * 90000);
+
+    this.dataService.addForm({
+      id: requisitionId,
+      ...this.form.value,
+    });
+
+    alert(
+      `Requisition Created Successfully.\nID : ${requisitionId}`
+    );
+
+    this.router.navigate(['/repair', requisitionId]);
+  }
 }
+

@@ -1,0 +1,99 @@
+<div class="repair-page">
+
+  <div class="main-section">
+
+    <h2>
+      ERS Review & Approval
+    </h2>
+
+    <div class="section-title">
+      SAP Details
+    </div>
+
+    <div class="sap-grid">
+
+      <div class="field">
+        <label>SAP Material Code</label>
+        <input value="NA" readonly>
+      </div>
+
+      <div class="field">
+        <label>SAP Equipment No</label>
+        <input value="NA" readonly>
+      </div>
+
+      <div class="field">
+        <label>SAP Refurbishment Order No</label>
+        <input value="NA" readonly>
+      </div>
+
+      <div class="field">
+        <label>SAP Fund Center</label>
+        <input value="NA" readonly>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="side-panel">
+
+    <div class="field">
+      <label>Upload Files</label>
+      <input type="file">
+    </div>
+
+    <div class="field">
+      <label>Reject Date</label>
+      <input type="date">
+    </div>
+
+    <div class="field">
+      <label>Reject Time</label>
+      <input type="time">
+    </div>
+
+    <div class="field">
+      <label>More Remarks</label>
+      <textarea></textarea>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="button-row">
+
+  <button
+    class="outline-btn"
+    (click)="validateSap()">
+
+    Validate SAP Code
+
+  </button>
+
+  <button
+    class="outline-btn"
+    (click)="sendAcknowledgement()">
+
+    Send Acknowledgement
+
+  </button>
+
+  <button
+    class="primary-btn"
+    (click)="generateJobNo()">
+
+    Generate ERS Job No
+
+  </button>
+
+  <button
+    class="danger-btn"
+    (click)="rejectRequest()">
+
+    Reject
+
+  </button>
+
+</div>

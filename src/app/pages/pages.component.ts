@@ -1,14 +1,6 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-form',
-  standalone: true,
-  template: `<div class="page"><h2>Requisition Form</h2></div>`,
-  styles: `.page { padding: 8px; } h2 { color: var(--primary); }`,
-})
-export class FormComponent {}
-
-@Component({
   selector: 'app-dashboard',
   standalone: true,
   template: `<div class="page"><h2>Dashboard</h2></div>`,
@@ -71,14 +63,6 @@ export class HelpComponent {}
   styles: `.page { padding: 8px; } h2 { color: var(--primary); }`,
 })
 export class ProfileComponent {}
-
-@Component({
-  selector: 'app-repair',
-  standalone: true,
-  template: `<div class="page"><h2>Repair Details</h2></div>`,
-  styles: `.page { padding: 8px; } h2 { color: var(--primary); }`,
-})
-export class RepairComponent {}
 
 @Component({
   selector: 'app-allotment',

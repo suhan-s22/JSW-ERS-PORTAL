@@ -3,6 +3,7 @@ import { authGuard } from './guards/auth.guard';
 import { LayoutComponent } from './components/layout/layout.component';
 import { LoginComponent } from './features/login/login.component';
 import { FormComponent } from './pages/form.component';
+import { RepairComponent } from './pages/repair.component';
 
 import {
   AllotmentComponent,
@@ -13,7 +14,6 @@ import {
   NotificationsComponent,
   ObservationsComponent,
   ProfileComponent,
-  RepairComponent,
   ViewComponent,
 } from './pages/pages.component';
 

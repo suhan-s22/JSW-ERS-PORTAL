@@ -1,0 +1,342 @@
+<div class="page">
+  <div class="form-card">
+
+    <h2 class="form-title">
+      Electrical Repair Service Requisition Form
+    </h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="section-title">
+        Equipment Information
+      </div>
+
+      <div class="form-layout">
+
+        <!-- LEFT COLUMN -->
+        <div class="column">
+
+          <div class="form-group">
+            <label>Main Equipment Name <span class="required">*</span></label>
+            <input
+  type="text"
+  formControlName="mainEquipmentName"
+  [class.invalid-field]="isInvalid('mainEquipmentName')">
+
+@if (isInvalid('mainEquipmentName')) {
+  <div class="error-text">
+    Main Equipment Name is required
+  </div>
+}
+          </div>
+
+          <div class="form-group">
+            <label>Equipment Serial No <span class="required">*</span></label>
+            <input type="text" formControlName="equipmentSerialNo">
+          </div>
+
+          <div class="form-group">
+            <label>Motor Manufacturing Year <span class="required">*</span></label>
+            <input type="number" formControlName="motorManufacturingYear">
+          </div>
+
+          <div class="form-group">
+            <label>Application / Use <span class="required">*</span></label>
+            <input type="text" formControlName="applicationUse">
+          </div>
+
+          <div class="form-group">
+            <label>Installed Location</label>
+            <input type="text" formControlName="installedLocation">
+          </div>
+
+          <div class="form-group">
+            <label>Installed Qty <span class="required">*</span></label>
+            <input type="number" formControlName="installedQty">
+          </div>
+
+          <div class="form-group">
+            <label>Equipment Type <span class="required">*</span></label>
+            <select formControlName="equipmentType">
+              <option value="">Select</option>
+
+              @for (item of equipmentTypes; track item) {
+                <option [value]="item">{{ item }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Service Type <span class="required">*</span></label>
+            <select formControlName="serviceType">
+              <option value="">Select</option>
+              <option value="LT MOTOR REWINDING">LT MOTOR REWINDING</option>
+              <option value="HT MOTOR REWINDING">HT MOTOR REWINDING</option>
+              <option value="REPAIR">REPAIR</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Received Date <span class="required">*</span></label>
+            <input type="date" formControlName="receivedDate">
+          </div>
+
+          <div class="form-group">
+            <label>Warranty Status <span class="required">*</span></label>
+            <select formControlName="warrantyStatus">
+              <option value="">Select</option>
+
+              @for (item of warrantyStatuses; track item) {
+                <option [value]="item">{{ item }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Bearing Type <span class="required">*</span></label>
+            <select formControlName="bearingType">
+              <option value="">Select</option>
+
+              @for (item of bearingTypes; track item) {
+                <option [value]="item">{{ item }}</option>
+              }
+            </select>
+          </div>
+
+        </div>
+
+        <!-- CENTER COLUMN -->
+        <div class="column">
+
+          <div class="form-group">
+            <label>Make <span class="required">*</span></label>
+            <input type="text" formControlName="make">
+          </div>
+
+          <div class="form-group">
+            <label>Model</label>
+            <input type="text" formControlName="model">
+          </div>
+
+          <div class="form-group">
+            <label>kW</label>
+            <input type="text" formControlName="kw">
+          </div>
+
+          <div class="form-group">
+            <label>Frame <span class="required">*</span></label>
+            <input type="text" formControlName="frame">
+          </div>
+
+          <div class="form-group">
+            <label>Size</label>
+            <input type="text" formControlName="size">
+          </div>
+
+          <div class="form-group">
+            <label>RPM</label>
+            <input type="text" formControlName="rpm">
+          </div>
+
+          <div class="form-group">
+            <label>KVA</label>
+            <input type="text" formControlName="kva">
+          </div>
+
+          <div class="form-group">
+            <label>Voltage</label>
+            <input type="text" formControlName="voltage">
+          </div>
+
+          <div class="form-group">
+            <label>Duty Cycle</label>
+            <input type="text" formControlName="dutyCycle">
+          </div>
+
+          <div class="form-group">
+            <label>Current</label>
+            <input type="text" formControlName="current">
+          </div>
+
+          <div class="form-group">
+            <label>Received Time <span class="required">*</span></label>
+            <input type="time" formControlName="receivedTime">
+          </div>
+
+          <div class="form-group">
+            <label>Previous Refurbishment No</label>
+            <input type="text" formControlName="previousRefurbishmentNo">
+          </div>
+
+          <div class="form-group">
+            <label>Spares Details</label>
+            <input type="text" formControlName="sparesDetails">
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="column">
+
+          <h3>User Department Details</h3>
+
+          <div class="form-group">
+            <label>Department</label>
+            <input type="text" formControlName="department">
+          </div>
+
+          <div class="form-group">
+            <label>Location</label>
+            <input type="text" formControlName="location">
+          </div>
+
+          <div class="form-group">
+            <label>SPOC Name <span class="required">*</span></label>
+            <input type="text" formControlName="spocName">
+          </div>
+
+          <div class="form-group">
+            <label>SPOC Email <span class="required">*</span></label>
+            <input type="email" formControlName="spocEmail">
+          </div>
+
+          <div class="form-group">
+            <label>SPOC Contact <span class="required">*</span></label>
+            <input type="text" formControlName="spocContact">
+          </div>
+
+          <div class="form-group">
+            <label>Electrical Head Name <span class="required">*</span></label>
+            <input type="text" formControlName="electricalHeadName">
+          </div>
+
+          <div class="form-group">
+            <label>Electrical Head Email <span class="required">*</span></label>
+            <input type="email" formControlName="electricalHeadEmail">
+          </div>
+
+          <div class="form-group">
+            <label>HOD Name <span class="required">*</span></label>
+            <input type="text" formControlName="hodName">
+          </div>
+
+          <div class="form-group">
+            <label>HOD Email <span class="required">*</span></label>
+            <input type="email" formControlName="hodEmail">
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="section-title">
+        Repair Analysis / Observation
+      </div>
+
+      <div class="grid-2">
+
+        <div class="form-group">
+          <label>
+            Defects Observed
+            <span class="required">*</span>
+          </label>
+
+          <textarea
+            formControlName="defectsObserved">
+          </textarea>
+        </div>
+
+        <div class="form-group">
+          <label>
+            Repairs Required
+            <span class="required">*</span>
+          </label>
+
+          <textarea
+            formControlName="repairsRequired">
+          </textarea>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label>
+          Reason Of Failure
+          <span class="required">*</span>
+        </label>
+
+        <select formControlName="reasonOfFailure">
+
+          <option value="">Select</option>
+
+          @for (item of failureReasons; track item) {
+            <option [value]="item">
+              {{ item }}
+            </option>
+          }
+
+        </select>
+      </div>
+
+      <div class="form-group">
+
+        <label>
+          Upload Supporting Files
+        </label>
+
+        <input type="file">
+
+      </div>
+
+      <div class="section-title">
+        SAP Details
+      </div>
+
+      <div class="grid-4">
+
+        <div class="form-group">
+          <label>SAP Material Code *</label>
+          <input
+            type="text"
+            formControlName="sapMaterialCode">
+        </div>
+
+        <div class="form-group">
+          <label>SAP Equipment No *</label>
+          <input
+            type="text"
+            formControlName="sapEquipmentNo">
+        </div>
+
+        <div class="form-group">
+          <label>SAP Refurbishment Order No *</label>
+          <input
+            type="text"
+            formControlName="sapRefurbishmentOrderNo">
+        </div>
+
+        <div class="form-group">
+          <label>SAP Fund Center *</label>
+          <input
+            type="text"
+            formControlName="sapFundCenter">
+        </div>
+
+      </div>
+
+      <div class="submit-section">
+
+        <button
+          class="submit-btn"
+          type="submit">
+
+          Submit Requisition
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
