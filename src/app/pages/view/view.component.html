@@ -2,7 +2,7 @@
 
   <div class="page-header">
 
-    <h2>Equipment Details</h2>
+    <h2>View</h2>
 
     <div class="header-actions">
 
@@ -25,6 +25,68 @@
   <div class="table-wrapper">
 
     <table>
+        @if (showSettings) {
+
+<div class="modal-backdrop">
+
+  <div class="settings-modal">
+
+    <h3>Personalize Columns</h3>
+
+    <div class="modal-content">
+
+      <div>
+        <label>Available Columns</label>
+
+        <select multiple size="10">
+
+          @for (column of availableColumns; track column) {
+            <option>{{ column }}</option>
+          }
+
+        </select>
+
+      </div>
+
+      <div class="move-buttons">
+        <button>&gt;</button>
+        <button>&lt;</button>
+      </div>
+
+      <div>
+        <label>Visible Columns</label>
+
+        <select multiple size="10">
+
+          @for (column of availableColumns; track column) {
+            <option>{{ column }}</option>
+          }
+
+        </select>
+
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+
+      <button class="apply-btn">
+        Apply Changes
+      </button>
+
+      <button
+        class="cancel-btn"
+        (click)="closeSettings()">
+        Cancel
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+}
 
       <thead>
 
@@ -42,23 +104,51 @@
         </tr>
 
         <tr class="filter-row">
-          <th><input type="text"></th>
-          <th><input type="text"></th>
-          <th><input type="text"></th>
-          <th><input type="text"></th>
-          <th><input type="text"></th>
-          <th><input type="text"></th>
-          <th><input type="text"></th>
-          <th><input type="text"></th>
-          <th><input type="text"></th>
-          <th><input type="text"></th>
+
+          <th>
+            <input
+              type="text"
+              placeholder="Filter"
+              [(ngModel)]="idFilter">
+          </th>
+
+          <th></th>
+
+          <th>
+            <input
+              type="text"
+              placeholder="Filter"
+              [(ngModel)]="equipmentFilter">
+          </th>
+
+          <th>
+            <input
+              type="text"
+              placeholder="Filter"
+              [(ngModel)]="serialFilter">
+          </th>
+
+          <th></th>
+
+          <th>
+            <input
+              type="text"
+              placeholder="Filter"
+              [(ngModel)]="makeFilter">
+          </th>
+
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+
         </tr>
 
       </thead>
 
       <tbody>
 
-        @for (row of rows; track row.refurbishmentId) {
+        @for (row of filteredRows; track row.refurbishmentId) {
 
           <tr>
 

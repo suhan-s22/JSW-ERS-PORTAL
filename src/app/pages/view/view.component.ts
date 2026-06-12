@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 interface ViewRecord {
   refurbishmentId: number;
@@ -16,7 +17,7 @@ interface ViewRecord {
 @Component({
   selector: 'app-view',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css']
 })
@@ -24,7 +25,20 @@ export class ViewComponent {
 
   rows: ViewRecord[] = [];
 
+  idFilter = '';
+  equipmentFilter = '';
+  serialFilter = '';
+  makeFilter = '';
+
   constructor() {
+
+    const makes = [
+      'ABB',
+      'Siemens',
+      'Crompton',
+      'Kirloskar',
+      'BHEL'
+    ];
 
     for (let i = 20; i <= 49; i++) {
 
@@ -33,7 +47,7 @@ export class ViewComponent {
         equipmentName: 'Motor',
         serialNo: `EQ${1000 + i}`,
         mfgYear: 2018 + (i % 6),
-        make: 'ABB',
+        make: makes[i % makes.length],
         model: `M-${i}`,
         kw: `${50 + i}`,
         frame: `${100 + i}`,
@@ -41,6 +55,47 @@ export class ViewComponent {
       });
 
     }
+
+  }
+
+  get filteredRows(): ViewRecord[] {
+
+    return this.rows.filter(row => {
+
+      const idMatch =
+        row.refurbishmentId
+          .toString()
+          .includes(this.idFilter);
+
+      const equipmentMatch =
+        row.equipmentName
+          .toLowerCase()
+          .includes(
+            this.equipmentFilter.toLowerCase()
+          );
+
+      const serialMatch =
+        row.serialNo
+          .toLowerCase()
+          .includes(
+            this.serialFilter.toLowerCase()
+          );
+
+      const makeMatch =
+        row.make
+          .toLowerCase()
+          .includes(
+            this.makeFilter.toLowerCase()
+          );
+
+      return (
+        idMatch &&
+        equipmentMatch &&
+        serialMatch &&
+        makeMatch
+      );
+
+    });
 
   }
 
@@ -58,7 +113,7 @@ export class ViewComponent {
       'RPM'
     ];
 
-    const csvRows = this.rows.map(row => [
+    const csvRows = this.filteredRows.map(row => [
       row.refurbishmentId,
       row.equipmentName,
       row.serialNo,
@@ -89,11 +144,31 @@ export class ViewComponent {
   }
 
   openSettings(): void {
-    alert('Column Personalization Coming Soon');
-  }
+  this.showSettings = true;
+}
+
+closeSettings(): void {
+  this.showSettings = false;
+}
 
   viewAllotment(id: number): void {
     alert(`Opening Equipment Details for ID ${id}`);
   }
 
+  showSettings = false;
+
+availableColumns = [
+  'Refurbishment ID',
+  'Allotment',
+  'Main Equipment Name',
+  'Serial No',
+  'Mfg Year',
+  'Make',
+  'Model',
+  'KW',
+  'Frame',
+  'RPM'
+];
+
 }
+

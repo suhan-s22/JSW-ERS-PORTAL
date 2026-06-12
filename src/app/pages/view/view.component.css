@@ -57,8 +57,9 @@ thead {
 th,
 td {
   border: 1px solid #d9d9d9;
-  padding: 8px;
+  padding: 6px 10px;
   text-align: left;
+  font-size: 12px;
 }
 
 .filter-row input {
@@ -77,4 +78,64 @@ tbody tr:hover {
   background: transparent;
   cursor: pointer;
   font-size: 16px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  background: white;
+  border: 1px solid #d9d9d9;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.settings-modal {
+  background: white;
+  width: 800px;
+  padding: 24px;
+  border-radius: 6px;
+}
+
+.modal-content {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.modal-content select {
+  width: 250px;
+}
+
+.move-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.modal-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.apply-btn {
+  background: #0d6efd;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+}
+
+.cancel-btn {
+  padding: 8px 16px;
 }
