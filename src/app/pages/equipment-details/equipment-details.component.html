@@ -1,0 +1,148 @@
+<div class="equipment-page">
+
+  <h2>Equipment Allotment</h2>
+
+  <div class="equipment-header">
+
+    <div class="field">
+      <label>ERS Job No</label>
+      <input value="ERS-2026-00035">
+    </div>
+
+    <div class="field">
+      <label>Rating</label>
+      <input>
+    </div>
+
+    <div class="field">
+      <label>Duty Cycle</label>
+      <input>
+    </div>
+
+    <div class="field">
+      <label>RPM</label>
+      <input>
+    </div>
+
+    <div class="field">
+      <label>Make</label>
+      <input value="11">
+    </div>
+
+    <div class="field">
+      <label>Department</label>
+      <input>
+    </div>
+
+    <div class="field">
+      <label>SL No</label>
+      <input value="EQ123">
+    </div>
+
+  </div>
+
+  <div class="vendor-row">
+
+    <input placeholder="SAP Refurbishment No">
+
+    <select>
+      <option>Select Vendor</option>
+      <option>Vendor 1</option>
+      <option>Vendor 2</option>
+    </select>
+
+    <input placeholder="Vendor Code">
+
+    <input placeholder="PO No">
+
+    <button class="add-btn">
+      + Add
+    </button>
+
+  </div>
+
+  <h3>Dismantling Checklist</h3>
+
+  <div class="checklist-container">
+
+    <div class="checklist-column">
+
+      @for (item of leftChecklist; track item.name) {
+
+        <div class="check-row">
+
+          <span>{{ item.name }}</span>
+
+          <input
+            type="text"
+            [(ngModel)]="item.remarks">
+
+          <label>
+            <input
+              type="radio"
+              [name]="item.name"
+              value="ok"
+              [(ngModel)]="item.status">
+            Ok
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              [name]="item.name"
+              value="not-ok"
+              [(ngModel)]="item.status">
+            Not Ok
+          </label>
+
+        </div>
+
+      }
+
+    </div>
+
+    <div class="checklist-column">
+
+      @for (item of rightChecklist; track item.name) {
+
+        <div class="check-row">
+
+          <span>{{ item.name }}</span>
+
+          <input
+            type="text"
+            [(ngModel)]="item.remarks">
+
+          <label>
+            <input
+              type="radio"
+              [name]="item.name"
+              value="ok"
+              [(ngModel)]="item.status">
+            Ok
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              [name]="item.name"
+              value="not-ok"
+              [(ngModel)]="item.status">
+            Not Ok
+          </label>
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
+  <button
+    class="save-btn"
+    (click)="saveChecklist()">
+    Save
+  </button>
+
+</div>

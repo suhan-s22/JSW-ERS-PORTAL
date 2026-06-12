@@ -1,91 +1,220 @@
 <div class="repair-page">
 
-  <div class="main-section">
+  <h2>ERS Review & Approval</h2>
 
-```
-<h2>
-  ERS Review & Approval
-</h2>
+  <div class="content-layout">
 
-<div class="section-title">
-  SAP Details
-</div>
+    <div class="main-content">
 
-<div class="sap-grid">
+      <div class="section">
 
-  <div class="field">
-    <label>SAP Material Code</label>
-    <input value="NA" readonly>
+        <h3>Equipment Information</h3>
+
+        <div class="grid">
+
+          <div class="field">
+            <label>Equipment Name</label>
+            <input value="LT Motor" readonly>
+          </div>
+
+          <div class="field">
+            <label>Equipment Number</label>
+            <input value="EQ1020" readonly>
+          </div>
+
+          <div class="field">
+            <label>Serial Number</label>
+            <input value="SER1020" readonly>
+          </div>
+
+          <div class="field">
+            <label>Make</label>
+            <input value="ABB" readonly>
+          </div>
+
+          <div class="field">
+            <label>Model</label>
+            <input value="M20" readonly>
+          </div>
+
+          <div class="field">
+            <label>Rating</label>
+            <input value="55 KW" readonly>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="section">
+
+        <h3>User Department Details</h3>
+
+        <div class="grid">
+
+          <div class="field">
+            <label>Department</label>
+            <input value="Steel Melt Shop" readonly>
+          </div>
+
+          <div class="field">
+            <label>Contact Person</label>
+            <input value="Rahul Sharma" readonly>
+          </div>
+
+          <div class="field">
+            <label>Phone Number</label>
+            <input value="9876543210" readonly>
+          </div>
+
+          <div class="field">
+            <label>Location</label>
+            <input value="Plant 1" readonly>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="section">
+
+        <h3>Repair Analysis / Observation</h3>
+
+        <div class="grid">
+
+          <div class="field">
+            <label>Failure Type</label>
+            <input value="Electrical Failure" readonly>
+          </div>
+
+          <div class="field">
+            <label>Reason Of Failure</label>
+            <input value="Short Circuit" readonly>
+          </div>
+
+        </div>
+
+        <div class="field">
+          <label>Observation</label>
+
+          <textarea readonly>
+Motor winding damaged during operation. Repair required.
+          </textarea>
+        </div>
+
+        <div class="field">
+          <label>Attachment</label>
+          <input value="Motor_Report.pdf" readonly>
+        </div>
+
+      </div>
+
+      <div class="section">
+
+        <h3>SAP Details</h3>
+
+        <div class="grid">
+
+          <div class="field">
+            <label>SAP Material Code</label>
+            <input value="NA" readonly>
+          </div>
+
+          <div class="field">
+            <label>SAP Equipment No</label>
+            <input value="NA" readonly>
+          </div>
+
+          <div class="field">
+            <label>SAP Refurbishment Order No</label>
+            <input value="NA" readonly>
+          </div>
+
+          <div class="field">
+            <label>SAP Fund Center</label>
+            <input value="NA" readonly>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="side-panel">
+
+      <div class="field">
+        <label>Upload Files</label>
+        <input type="file">
+      </div>
+
+      <div class="field">
+        <label>Reject Date</label>
+        <input type="date">
+      </div>
+
+      <div class="field">
+        <label>Reject Time</label>
+        <input type="time">
+      </div>
+
+      <div class="field">
+        <label>More Remarks</label>
+        <textarea></textarea>
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="field">
-    <label>SAP Equipment No</label>
-    <input value="NA" readonly>
-  </div>
+  <div class="button-row">
 
-  <div class="field">
-    <label>SAP Refurbishment Order No</label>
-    <input value="NA" readonly>
-  </div>
+    <button
+      class="outline-btn"
+      (click)="validateSap()">
+      Validate SAP Code
+    </button>
 
-  <div class="field">
-    <label>SAP Fund Center</label>
-    <input value="NA" readonly>
-  </div>
+    <button
+      class="outline-btn"
+      (click)="sendAcknowledgement()">
+      Send Acknowledgement
+    </button>
 
-</div>
-```
+    <button
+      class="primary-btn"
+      (click)="generateJobNo()">
+      Generate ERS Job No
+    </button>
 
-  </div>
-
-  <div class="side-panel">
-
-```
-<div class="field">
-  <label>Upload Files</label>
-  <input type="file">
-</div>
-
-<div class="field">
-  <label>Reject Date</label>
-  <input type="date">
-</div>
-
-<div class="field">
-  <label>Reject Time</label>
-  <input type="time">
-</div>
-
-<div class="field">
-  <label>More Remarks</label>
-  <textarea></textarea>
-</div>
-```
+    <button
+      class="danger-btn"
+      (click)="rejectRequest()">
+      Reject
+    </button>
 
   </div>
 
 </div>
 
-<div class="button-row">
+@if (showJobPopup) {
 
-<button
-class="outline-btn"
-(click)="validateSap()">
-Validate SAP Code </button>
+<div class="popup-overlay">
 
-<button
-class="outline-btn"
-(click)="sendAcknowledgement()">
-Send Acknowledgement </button>
+  <div class="popup">
 
-<button
-class="primary-btn"
-(click)="generateJobNo()">
-Generate ERS Job No </button>
+    <h3>ERS Job Generated</h3>
 
-<button
-class="danger-btn"
-(click)="rejectRequest()">
-Reject </button>
+    <p>ERS-2026-00035</p>
+
+    <button
+      class="ok-btn"
+      (click)="closePopup()">
+      OK
+    </button>
+
+  </div>
 
 </div>
+
+}

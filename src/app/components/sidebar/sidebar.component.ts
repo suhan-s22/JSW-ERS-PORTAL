@@ -117,7 +117,7 @@ export class SidebarComponent {
     { label: 'Requisition Form', route: '/form', icon: 'grid' },
     { label: 'Dashboard', route: '/dashboard', icon: 'chart' },
     { label: 'View', route: '/view', icon: 'eye' },
-    { label: 'Equipment Details', route: '/allotment/1', icon: 'check-circle' },
+    { label: 'Equipment Details', route: 'equipment-details', icon: 'check-circle' },
     { label: 'Observations', route: '/observations', icon: 'eye-circle' },
     { label: 'Motor Details', route: '/motor-details', icon: 'wrench' },
     { label: 'Notifications', route: '/notifications', icon: 'bell' },

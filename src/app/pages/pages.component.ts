@@ -23,35 +23,3 @@ export class MotorDetailsComponent {}
   styles: `.page { padding: 8px; } h2 { color: var(--primary); }`,
 })
 export class NotificationsComponent {}
-
-@Component({
-  selector: 'app-contact',
-  standalone: true,
-  template: `<div class="page"><h2>Contact Us</h2></div>`,
-  styles: `.page { padding: 8px; } h2 { color: var(--primary); }`,
-})
-export class ContactComponent {}
-
-@Component({
-  selector: 'app-help',
-  standalone: true,
-  template: `<div class="page"><h2>Help</h2></div>`,
-  styles: `.page { padding: 8px; } h2 { color: var(--primary); }`,
-})
-export class HelpComponent {}
-
-@Component({
-  selector: 'app-profile',
-  standalone: true,
-  template: `<div class="page"><h2>Profile</h2></div>`,
-  styles: `.page { padding: 8px; } h2 { color: var(--primary); }`,
-})
-export class ProfileComponent {}
-
-@Component({
-  selector: 'app-allotment',
-  standalone: true,
-  template: `<div class="page"><h2>Equipment Details</h2></div>`,
-  styles: `.page { padding: 8px; } h2 { color: var(--primary); }`,
-})
-export class AllotmentComponent {}

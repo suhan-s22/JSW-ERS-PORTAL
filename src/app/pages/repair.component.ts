@@ -10,15 +10,14 @@ import { CommonModule } from '@angular/common';
 })
 export class RepairComponent {
 
+  showJobPopup = false;
+
   generateJobNo(): void {
+    this.showJobPopup = true;
+  }
 
-    const jobNo =
-      'ERS-2026-' +
-      Math.floor(10000 + Math.random() * 90000);
-
-    alert(
-      `ERS Job Generated : ${jobNo}`
-    );
+  closePopup(): void {
+    this.showJobPopup = false;
   }
 
   validateSap(): void {
@@ -32,4 +31,5 @@ export class RepairComponent {
   rejectRequest(): void {
     alert('Request Rejected');
   }
+
 }

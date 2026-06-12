@@ -1,0 +1,43 @@
+<div class="help-page">
+
+  <h1>
+    FREQUENTLY ASKED QUESTIONS (FAQs)
+  </h1>
+
+  <div class="faq-container">
+
+    @for (faq of faqs; track faq.question; let i = $index) {
+
+      <div class="faq-item">
+
+        <button
+          class="faq-question"
+          (click)="toggle(i)">
+
+          <span>
+            {{ faq.question }}
+          </span>
+
+          <span>
+            ▼
+          </span>
+
+        </button>
+
+        @if (activeIndex === i) {
+
+          <div class="faq-answer">
+
+            {{ faq.answer }}
+
+          </div>
+
+        }
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

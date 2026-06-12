@@ -1,0 +1,117 @@
+<div class="contact-page">
+
+  <div class="info-section">
+
+    <div class="info-card">
+
+      <div class="icon">
+        ✉
+      </div>
+
+      <h3>OUR EMAIL</h3>
+
+      <p>www.jsw.com</p>
+
+    </div>
+
+    <div class="info-card">
+
+      <div class="icon">
+        ☎
+      </div>
+
+      <h3>OUR PHONE NUMBER</h3>
+
+      <p>1234567890</p>
+
+    </div>
+
+    <div class="info-card">
+
+      <div class="icon">
+        📍
+      </div>
+
+      <h3>OUR MAIN OFFICE</h3>
+
+      <p>Address</p>
+
+    </div>
+
+  </div>
+
+  <div class="form-section">
+
+    <h2>CONTACT US</h2>
+
+    <form
+      [formGroup]="contactForm"
+      (ngSubmit)="submit()">
+
+      <label>
+        Enter Name
+      </label>
+
+      <input
+        type="text"
+        formControlName="name">
+
+      @if (
+        contactForm.get('name')?.touched &&
+        contactForm.get('name')?.invalid
+      ) {
+
+        <small class="error">
+          Name is required
+        </small>
+
+      }
+
+      <label>
+        Enter Valid Email
+      </label>
+
+      <input
+        type="email"
+        formControlName="email">
+
+      @if (
+        contactForm.get('email')?.touched &&
+        contactForm.get('email')?.invalid
+      ) {
+
+        <small class="error">
+          Valid email is required
+        </small>
+
+      }
+
+      <label>
+        Enter Your Query Below
+      </label>
+
+      <textarea
+        rows="6"
+        formControlName="query">
+      </textarea>
+
+      @if (
+        contactForm.get('query')?.touched &&
+        contactForm.get('query')?.invalid
+      ) {
+
+        <small class="error">
+          Query is required
+        </small>
+
+      }
+
+      <button type="submit">
+        SEND
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
