@@ -1,14 +1,6 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard',
-  standalone: true,
-  template: `<div class="page"><h2>Dashboard</h2></div>`,
-  styles: `.page { padding: 8px; } h2 { color: var(--primary); }`,
-})
-export class DashboardComponent {}
-
-@Component({
   selector: 'app-observations',
   standalone: true,
   template: `<div class="page"><h2>Observations</h2></div>`,

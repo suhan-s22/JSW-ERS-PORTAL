@@ -5,11 +5,11 @@ import { LoginComponent } from './features/login/login.component';
 import { FormComponent } from './pages/form.component';
 import { RepairComponent } from './pages/repair.component';
 import { ViewComponent } from './pages/view/view.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 import {
   AllotmentComponent,
   ContactComponent,
-  DashboardComponent,
   HelpComponent,
   MotorDetailsComponent,
   NotificationsComponent,

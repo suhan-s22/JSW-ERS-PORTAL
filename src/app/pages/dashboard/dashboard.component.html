@@ -1,0 +1,252 @@
+<div class="dashboard-container">
+
+  <div class="tab-buttons">
+
+    <button
+      [class.active]="activeTab === 'Motor Repair Status'"
+      (click)="toggleTab('Motor Repair Status')">
+      Motor Repair Status
+    </button>
+
+    <button
+      [class.active]="activeTab === 'Week Comparison'"
+      (click)="toggleTab('Week Comparison')">
+      Week Comparison
+    </button>
+
+    <button
+      [class.active]="activeTab === 'Category Analysis'"
+      (click)="toggleTab('Category Analysis')">
+      Category Analysis
+    </button>
+
+    <button
+      [class.active]="activeTab === 'Repair Analysis'"
+      (click)="toggleTab('Repair Analysis')">
+      Repair Analysis
+    </button>
+
+    <button
+      [class.active]="activeTab === 'Turnaround Time'"
+      (click)="toggleTab('Turnaround Time')">
+      Turnaround Time
+    </button>
+
+  </div>
+
+  <p class="info-text">
+    Click any button to analyse motor performance graphs.
+    Click again to hide the charts.
+  </p>
+
+  @if (activeTab === 'Motor Repair Status') {
+
+    <div class="chart-grid">
+
+      <div class="card">
+
+        <h4>LT Motors Data</h4>
+
+        <div class="mini-chart">
+  <div class="bar-group">
+    <div class="bar red" style="height: 5px;"></div>
+    <span>IN REPAIR</span>
+  </div>
+
+  <div class="bar-group">
+    <div class="bar green" style="height: 80px;"></div>
+    <span>REPAIRED</span>
+  </div>
+</div>
+
+      </div>
+
+      <div class="card">
+
+        <h4>Pending Motors Status</h4>
+
+        <div class="pie-chart">
+          <div class="pie-label">15</div>
+        </div>
+
+        <div class="legend">
+          <span class="blue-box"></span> ERS
+          <span class="red-box"></span> User Department
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h4>Pending at User Department</h4>
+
+        <div class="horizontal-item">
+          <span>Mechanical Jobs</span>
+          <div class="horizontal-bar red-bar"></div>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h4>Pending at ERS</h4>
+
+        <div class="horizontal-item">
+          <span>Work U/P</span>
+          <div class="horizontal-bar blue-bar"></div>
+        </div>
+
+        <div class="horizontal-item">
+          <span>Yet to Start</span>
+          <div class="horizontal-bar blue-bar small"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  }
+
+  @if (activeTab === 'Week Comparison') {
+
+<div class="chart-grid">
+
+  <div class="card">
+    <h4>Weekly Repairs</h4>
+
+    <div class="horizontal-item">
+      <span>Week 1</span>
+      <div class="horizontal-bar blue-bar"></div>
+    </div>
+
+    <div class="horizontal-item">
+      <span>Week 2</span>
+      <div class="horizontal-bar blue-bar small"></div>
+    </div>
+
+    <div class="horizontal-item">
+      <span>Week 3</span>
+      <div class="horizontal-bar blue-bar"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Weekly Requests</h4>
+
+    <div class="horizontal-item">
+      <span>New Requests</span>
+      <div class="horizontal-bar red-bar"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Performance Summary</h4>
+
+    <h2>82%</h2>
+    <p>Weekly Completion Rate</p>
+  </div>
+
+</div>
+
+}
+
+@if (activeTab === 'Category Analysis') {
+
+<div class="chart-grid">
+
+  <div class="card">
+    <h4>Motor Categories</h4>
+
+    <div class="pie-chart">
+      <div class="pie-label">45</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Equipment Distribution</h4>
+
+    <ul>
+      <li>LT Motors - 25</li>
+      <li>HT Motors - 12</li>
+      <li>Transformers - 8</li>
+      <li>Generators - 5</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4>Most Common Category</h4>
+
+    <h2>LT Motors</h2>
+    <p>52% of all requests</p>
+  </div>
+
+</div>
+
+}
+
+@if (activeTab === 'Repair Analysis') {
+
+<div class="chart-grid">
+
+  <div class="card">
+    <h4>Repair Completion</h4>
+
+    <div class="horizontal-item">
+      <span>Completed</span>
+      <div class="horizontal-bar blue-bar"></div>
+    </div>
+
+    <div class="horizontal-item">
+      <span>In Progress</span>
+      <div class="horizontal-bar red-bar"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Repair Statistics</h4>
+
+    <h2>120</h2>
+    <p>Total Repairs This Month</p>
+  </div>
+
+  <div class="card">
+    <h4>Success Rate</h4>
+
+    <h2>94%</h2>
+    <p>Successfully Repaired</p>
+  </div>
+
+</div>
+
+}
+
+@if (activeTab === 'Turnaround Time') {
+
+<div class="chart-grid">
+
+  <div class="card">
+    <h4>Average Turnaround</h4>
+
+    <h1>4.2</h1>
+    <p>Days</p>
+  </div>
+
+  <div class="card">
+    <h4>Fastest Repair</h4>
+
+    <h1>1.5</h1>
+    <p>Days</p>
+  </div>
+
+  <div class="card">
+    <h4>Longest Repair</h4>
+
+    <h1>9.3</h1>
+    <p>Days</p>
+  </div>
+
+</div>
+
+}
+
+</div>
